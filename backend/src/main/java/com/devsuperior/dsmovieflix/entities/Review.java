@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,13 +23,23 @@ public class Review implements Serializable {
 	@Column(columnDefinition = "TEXT")
 	private String text;
 	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "movie_id")
+	private Movie movie;
+	
 	public Review() {
 	}
 
-	public Review(Long id, String authority) {
+	public Review(Long id, String authority, User user, Movie movie) {
 		super();
 		this.id = id;
 		this.text = authority;
+		this.user = user;
+		this.movie = movie;
 	}
 
 	public Long getId() {
@@ -44,6 +56,14 @@ public class Review implements Serializable {
 
 	public void setAuthority(String authority) {
 		this.text = authority;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public Movie getMovie() {
+		return movie;
 	}
 
 	@Override
