@@ -174,7 +174,7 @@ public class MovieResourceIT {
 		Assertions.assertTrue(getMovies(result).length >= minimumMovieCount);
 	}
 
-	/*@Test
+	@Test
 	public void findAllPagedShouldReturnFilteredMoviesWhenGenreIsInformed() throws Exception {
 
 		String accessToken = authenticationUtil.obtainAccessToken(visitorUsername, visitorPassword);
@@ -188,7 +188,7 @@ public class MovieResourceIT {
 		result.andExpect(jsonPath("$.content").exists());
 		Assertions.assertTrue(getMovies(result).length > 0);
 		Assertions.assertTrue(allMoviesGenresMatch(getMovies(result), genreId));
-	}*/
+	}
 	
 	private MovieDTO[] getMovies(ResultActions result) throws Exception {
 		String json = result.andReturn().getResponse().getContentAsString();
@@ -211,12 +211,12 @@ public class MovieResourceIT {
 		return true;
 	}
 	
-	/*private boolean allMoviesGenresMatch(MovieDTO[] movies, long genreId) {
+	private boolean allMoviesGenresMatch(MovieDTO[] movies, long genreId) {
 		for (MovieDTO movie : movies) {
 			if (movie.getGenre().getId() != genreId) {
 				return false;
 			}
 		}
 		return true;
-	}*/
+	}
 }

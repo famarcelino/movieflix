@@ -2,13 +2,18 @@ package com.devsuperior.dsmovieflix.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
+
 import com.devsuperior.dsmovieflix.entities.Review;
 
 public class ReviewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	
+	@NotBlank(message = "Esse campo não pode ser vazio.")
 	private String text;
+	
 	private Long userId;
 	private Long movieId;
 	

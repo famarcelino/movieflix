@@ -30,11 +30,11 @@ public class ReviewResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	/*@PostMapping
+	@PostMapping
 	public ResponseEntity<ReviewDTO> insert(@Valid @RequestBody ReviewDTO dto) {
 	    dto = service.insert(dto);
 	    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 	    		.buildAndExpand(dto.getId()).toUri();
 	    return ResponseEntity.created(uri).body(dto);   
-	}*/
+	}
 }

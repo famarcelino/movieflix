@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devsuperior.dsmovieflix.dto.GenreDTO;
 import com.devsuperior.dsmovieflix.dto.MovieDTO;
 import com.devsuperior.dsmovieflix.services.MovieService;
 

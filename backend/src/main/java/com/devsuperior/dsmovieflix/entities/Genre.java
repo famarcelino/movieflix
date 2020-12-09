@@ -16,13 +16,13 @@ public class Genre implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String name;
 	
 	public Genre() {
 	}
 
 	public Genre(Long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}
