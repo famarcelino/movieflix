@@ -24,7 +24,7 @@ public class MovieResource {
 	public ResponseEntity<Page<MovieDTO>> findAll(
 			@RequestParam(value = "genreId", defaultValue = "0") Long genreId,
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
-			@RequestParam(value = "size", defaultValue = "5") Integer size) {
+			@RequestParam(value = "size", defaultValue = "10") Integer size) {
 
 		PageRequest pageRequest = PageRequest.of(page, size);
 
