@@ -1,0 +1,47 @@
+.home-conteiner {
+    display: flex;
+}
+
+.home-content {
+    margin-left : 120px;
+    margin-right: 40px;
+}
+
+.home-title {
+    font-size     : 55px;
+    line-height   : 75px;
+    letter-spacing: -0.015em;
+    margin-top    : 80px;
+    margin-bottom : 100px;
+}
+
+.home-subtitle {
+    font-size     : 24px;
+    line-height   : 33px;
+    letter-spacing: -0.015em;
+    color         : #F2F2F2;
+    margin-bottom : 70px;
+}
+
+.login-content {
+    margin-top : 40px;
+    padding: 95px 50px 50px 50px;
+    border-radius: 20px;
+}
+
+.login-title {
+    font-weight   : normal;
+    font-size     : 48px;
+    line-height   : 65px;
+    text-align    : center;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+}
+
+.login-form {
+    margin-top: 80px;
+}
+
+.login-button {
+    margin-top: 150px;
+}
