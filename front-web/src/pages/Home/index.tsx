@@ -15,16 +15,19 @@ type FormData = {
 const Home = () => {
     const { register, handleSubmit } = useForm<FormData>();
     const [hasError, setHasError] = useState(false);
+    const [isLogged, setIsLogged] = useState(false);
     const history = useHistory();
 
     const onSubmit = (data: FormData) => {
         makeLogin(data)
             .then(response => {
                 setHasError(false);
+                setIsLogged(true);
                 saveSessionData(response.data);
                 history.push('/movies');
             })
             .catch(() => {
+                setIsLogged(false);
                 setHasError(true);
             });
     }
@@ -48,25 +51,31 @@ const Home = () => {
                             Usuário ou senha inválidos!
                         </div>
                     )}
-                    <form className="login-form">
-                        <input
-                            type="email"
-                            className="form-control input-base margin-bottom-30"
-                            placeholder="Email"
-                            name="username"
-                            ref={register({ required: true })}
-                        />
-                        <input
-                            type="password"
-                            className="form-control input-base"
-                            placeholder="Senha"
-                            name="password"
-                            ref={register({ required: true, minLength: 5 })}
-                        />
-                        <div className="login-button">
-                            <ButtonIcon text="logar" />
+                    {isLogged ? (
+                        <div>
+                            <p>Teste</p>
                         </div>
-                    </form>
+                    ) : (
+                            <form className="login-form">
+                                <input
+                                    type="email"
+                                    className="form-control input-base margin-bottom-30"
+                                    placeholder="Email"
+                                    name="username"
+                                    ref={register({ required: true })}
+                                />
+                                <input
+                                    type="password"
+                                    className="form-control input-base"
+                                    placeholder="Senha"
+                                    name="password"
+                                    ref={register({ required: true, minLength: 5 })}
+                                />
+                                <div className="login-button">
+                                    <ButtonIcon text="logar" />
+                                </div>
+                            </form>
+                        )}
                 </div>
             </div>
         </div>
