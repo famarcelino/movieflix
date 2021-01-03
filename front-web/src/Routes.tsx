@@ -12,8 +12,8 @@ const Routes = () => {
             <NavBar />
             <Switch>
                 <Route path="/" exact><Home /></Route>
-                <Route path="/movies"><Movies /></Route>
-                <Route path="/movieDetail"><MovieDetail /></Route>
+                <Route path="/movies" exact><Movies /></Route>
+                <Route path="/movies/:movieId"><MovieDetail /></Route>
             </Switch>
         </Router>
     );

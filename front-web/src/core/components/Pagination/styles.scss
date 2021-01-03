@@ -1,0 +1,37 @@
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.pagination-item {
+    width: 40px;
+    height: 40px;
+    background-color: #6C6C6C;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 10px;
+
+    &.active {
+        background-color: #FFC700;
+    }
+}
+
+.page-active {
+    cursor: pointer;
+    color: #FFC700;
+}
+
+.page-inactive {
+    color: #e1e1e1;
+    pointer-events: none;
+}

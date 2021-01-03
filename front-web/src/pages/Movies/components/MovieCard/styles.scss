@@ -1,6 +1,12 @@
 .movie-card {
     width  : 270px;
-    padding: 25px 0 65px 0px;
+    height : 335px;
+    padding-top: 25px;
+}
+
+.movie-card-image {
+    width : 270px;
+    height: 164px;
 }
 
 .movie-info {
@@ -21,8 +27,9 @@
     color         : #FFC700;
 }
 
-.movie-synopse {
+.movie-subtitle {
     font-size     : 14px;
     line-height   : 19px;
     letter-spacing: -0.015em;
+    color         : #FFFFFF;
 }
