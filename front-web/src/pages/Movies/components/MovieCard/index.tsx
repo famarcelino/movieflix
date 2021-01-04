@@ -1,4 +1,4 @@
-import { Movie, MoviesResponse } from 'core/types/Movie';
+import { Movie } from 'core/types/Movie';
 import React from 'react';
 import './styles.scss';
 

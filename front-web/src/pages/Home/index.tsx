@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router-dom';
+import { useHistory /*, useLocation */ } from 'react-router-dom';
 import { ReactComponent as MainImage } from '../../core/assets/images/main-image.svg';
 import ButtonIcon from '../../core/components/ButtonIcon';
 import { saveSessionData } from '../../core/utils/auth';
@@ -11,12 +11,19 @@ type FormData = {
     username: string;
     password: string;
 };
-
+/*
+type LocationState = {
+    from: string;
+}
+*/
 const Home = () => {
     const { register, handleSubmit, errors } = useForm<FormData>();
     const [hasError, setHasError] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
     const history = useHistory();
+
+    //const location = useLocation<LocationState>();
+    //const { from } = location.state || {from: { pathname: "/"}};
 
     const onSubmit = (data: FormData) => {
         makeLogin(data)

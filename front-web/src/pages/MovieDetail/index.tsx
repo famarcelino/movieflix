@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useForm, Controller } from 'react-hook-form';
+//import { useForm, Controller } from 'react-hook-form';
 import './styles.scss';
 import CommentCard from '../Movies/components/CommentCard';
 import { makePrivateRequest } from 'core/utils/request';
 import { Movie } from 'core/types/Movie';
+import { isAllowedByRole } from 'core/utils/auth';
 
 type ParamsType = {
     movieId: string;
@@ -34,21 +35,21 @@ const MovieDetail = () => {
                     </div>
                 </div>
             </div>
-
-            <div className="card-base border-radius-10 text-center movie-detail-form-comment">
-                <form>
-                    <div>
-                        <textarea
-                            name="description"
-                            rows={2}
-                            placeholder="Deixe sua avaliação aqui"
-                            className="movie-detail-form-input border-radius-10"
-                        />
-                    </div>
-                    <button className="btn btn-primary movie-detail-form-button">salvar avaliação</button>
-                </form>
-            </div>
-
+            {isAllowedByRole(['ROLE_MEMBER']) && (
+                <div className="card-base border-radius-10 text-center movie-detail-form-comment">
+                    <form>
+                        <div>
+                            <textarea
+                                name="description"
+                                rows={2}
+                                placeholder="Deixe sua avaliação aqui"
+                                className="movie-detail-form-input border-radius-10"
+                            />
+                        </div>
+                        <button className="btn btn-primary movie-detail-form-button">salvar avaliação</button>
+                    </form>
+                </div>
+            )}
             <div className="card-base border-radius-10 movie-detail-comments">
                 {
                     movie?.reviews.map(review => (

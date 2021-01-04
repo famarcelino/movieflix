@@ -1,3 +1,5 @@
+import jwtDecode from "jwt-decode";
+
 export const CLIENT_ID = 'dsmovieflix';
 export const CLIENT_SECRET = 'dsmovieflix123';
 
@@ -10,9 +12,19 @@ type LoginResponse = {
     userId: number;
 }
 
+export type Role = 'ROLE_VISITOR' | 'ROLE_MEMBER';
+
+type AccessToken = {
+    exp: number;
+    user_name: string;
+    authorities: Role[];
+}
+
+
+
 export const saveSessionData = (loginResponse: LoginResponse) => {
     localStorage.setItem('authData', JSON.stringify(loginResponse));
-}; 
+};
 
 export const getSessionData = () => {
     const sessionData = localStorage.getItem('authData') ?? '{}';
@@ -20,3 +32,22 @@ export const getSessionData = () => {
 
     return parsedSessionData as LoginResponse;
 };
+
+export const isTokenValid = () => {
+    const {exp} = getAccessTokenDecoded();
+
+    return Date.now() <= exp * 1000;
+}
+
+export const getAccessTokenDecoded = () => {
+    const sessionData = getSessionData();
+
+    const tokenDecoded = jwtDecode(sessionData.access_token);
+    return tokenDecoded as AccessToken;
+}
+
+export const isAllowedByRole = (allowRoles: Role[] = []) => {
+
+    const { authorities } = getAccessTokenDecoded();
+    return allowRoles.some(role => authorities.includes(role));
+}
