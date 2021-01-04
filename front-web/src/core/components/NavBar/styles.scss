@@ -1,12 +1,32 @@
 .main-nav {
-    height: 70px;
-    color: #000;
-    align-items: center;
-    padding-left: 40px;
-    margin-left: 0;
-    margin-right: 0;
+    height       : 70px;
+    color        : #000;
+    align-items  : center;
+    padding-left : 40px;
+    padding-right: 40px;
+    margin-left  : 0;
+    margin-right : 0;
+
 }
 
 .nav-logo-text {
     color: #000;
+}
+
+.nav-link {
+    width: 103px;
+    //height: 30px;
+
+    border       : 1px solid #000000;
+    box-sizing   : border-box;
+    border-radius: 10px;
+
+    font-weight   : bold;
+    font-size     : 14px;
+    line-height   : 19px;
+    text-align    : center;
+    letter-spacing: -0.015em;
+    color         : #000000;
+    text-transform: uppercase;
+    align-content: center;
 }

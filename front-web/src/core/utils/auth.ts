@@ -1,4 +1,5 @@
 import jwtDecode from "jwt-decode";
+import history from './history';
 
 export const CLIENT_ID = 'dsmovieflix';
 export const CLIENT_SECRET = 'dsmovieflix123';
@@ -20,8 +21,6 @@ type AccessToken = {
     authorities: Role[];
 }
 
-
-
 export const saveSessionData = (loginResponse: LoginResponse) => {
     localStorage.setItem('authData', JSON.stringify(loginResponse));
 };
@@ -34,7 +33,7 @@ export const getSessionData = () => {
 };
 
 export const isTokenValid = () => {
-    const {exp} = getAccessTokenDecoded();
+    const { exp } = getAccessTokenDecoded();
 
     return Date.now() <= exp * 1000;
 }
@@ -42,12 +41,21 @@ export const isTokenValid = () => {
 export const getAccessTokenDecoded = () => {
     const sessionData = getSessionData();
 
-    const tokenDecoded = jwtDecode(sessionData.access_token);
-    return tokenDecoded as AccessToken;
+    try {
+        const tokenDecoded = jwtDecode(sessionData.access_token);
+        return tokenDecoded as AccessToken;
+    } catch (error) {
+        return {} as AccessToken;
+    }
 }
 
 export const isAllowedByRole = (allowRoles: Role[] = []) => {
 
     const { authorities } = getAccessTokenDecoded();
-    return allowRoles.some(role => authorities.includes(role));
+    return allowRoles.some(role => authorities?.includes(role));
+}
+
+export const logout = () => {
+    localStorage.removeItem('authData');
+    history.replace('/');
 }

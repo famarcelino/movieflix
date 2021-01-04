@@ -58,51 +58,45 @@ const Home = () => {
                             Usuário ou senha inválidos!
                         </div>
                     )}
-                    {isLogged ? (
-                        <div>
-                            <p>Teste</p>
+                    <form className="login-form">
+                        <div className="margin-bottom-30">
+                            <input
+                                type="email"
+                                className={`form-control input-base ${errors.username ? 'is-invalid' : ''}`}
+                                placeholder="Email"
+                                name="username"
+                                ref={register({
+                                    required: "Campo obrigatório",
+                                    pattern: {
+                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                        message: "Email inválido"
+                                    }
+                                })}
+                            />
+                            {errors.username && (
+                                <div className="invalid-feedback d-block">
+                                    {errors.username.message}
+                                </div>
+                            )}
                         </div>
-                    ) : (
-                            <form className="login-form">
-                                <div className="margin-bottom-30">
-                                    <input
-                                        type="email"
-                                        className={`form-control input-base ${errors.username ? 'is-invalid' : ''}`}
-                                        placeholder="Email"
-                                        name="username"
-                                        ref={register({
-                                            required: "Campo obrigatório",
-                                            pattern: {
-                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                message: "Email inválido"
-                                            }
-                                        })}
-                                    />
-                                    {errors.username && (
-                                        <div className="invalid-feedback d-block">
-                                            {errors.username.message}
-                                        </div>
-                                    )}
+                        <div>
+                            <input
+                                type="password"
+                                className={`form-control input-base ${errors.password ? 'is-invalid' : ''}`}
+                                placeholder="Senha"
+                                name="password"
+                                ref={register({ required: "Campo obrigatório" })}
+                            />
+                            {errors.password && (
+                                <div className="invalid-feedback d-block">
+                                    {errors.password.message}
                                 </div>
-                                <div>
-                                    <input
-                                        type="password"
-                                        className={`form-control input-base ${errors.password ? 'is-invalid' : ''}`}
-                                        placeholder="Senha"
-                                        name="password"
-                                        ref={register({ required: "Campo obrigatório" })}
-                                    />
-                                    {errors.password && (
-                                        <div className="invalid-feedback d-block">
-                                            {errors.password.message}
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="login-button">
-                                    <ButtonIcon text="logar" />
-                                </div>
-                            </form>
-                        )}
+                            )}
+                        </div>
+                        <div className="login-button">
+                            <ButtonIcon text="logar" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
