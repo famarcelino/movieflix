@@ -15,7 +15,7 @@ const Movies = () => {
     useEffect(() => {
         const params = {
             page: activePage,
-            size: 6
+            size: 8
         };
         setIsLoading(true);
         makePrivateRequest ({ url: '/movies', params })
@@ -40,7 +40,7 @@ const Movies = () => {
                 )}
             </div>
             {moviesResponse && <Pagination
-                size={moviesResponse.size}
+                size={moviesResponse.totalPages}
                 activePage={activePage}
                 onChange={page => setActivePage(page)}
             />}

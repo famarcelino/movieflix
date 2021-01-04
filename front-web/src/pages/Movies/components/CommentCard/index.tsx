@@ -1,14 +1,23 @@
 import React from 'react';
+import { Review } from 'core/types/Movie';
 import { ReactComponent as Star } from '../../../../core/assets/images/star.svg';
 import './styles.scss';
 
-const CommentCard = () => {
+type Props = {
+    reviews: Review;
+}
+
+const CommentCard = ({reviews}: Props) => {
+    
     return (
         <div className="comment-container">
-            <p className="comment-user"><span className="comment-star"><Star /></span>Maria Silva</p>
+            <p className="comment-user">
+                <span className="comment-star"><Star /></span>
+                {reviews.userId}
+            </p>
             <div className="comment-text">
                 <p>
-                    Gostei muito do filme. Foi muito bom mesmo. Pena que durou pouco.
+                    {reviews?.text}
                 </p>
             </div>
         </div>
