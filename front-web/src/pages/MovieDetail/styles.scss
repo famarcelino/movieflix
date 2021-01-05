@@ -49,18 +49,20 @@
 }
 
 .movie-detail-form-comment {
+    padding: 15px 20px 15px 20px;
     margin-bottom: 15px;
 }
 
 .movie-detail-form-input {
-    margin    : 15px 20px 10px 20px;
-    padding   : 10px 20px 0 20px;
-    width     : 96%;
+    //margin    : 15px 20px 0 20px;
+    //padding   : 10px 20px 0 20px;
+    width     : 100%;
     border    : 1px solid #E1E1E1;
     box-sizing: border-box;
 }
 
 .movie-detail-form-button {
+    margin-top    : 10px;
     margin-bottom : 13px;
     width         : 334px;
     text-transform: uppercase;

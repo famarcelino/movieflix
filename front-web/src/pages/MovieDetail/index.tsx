@@ -1,19 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-//import { useForm, Controller } from 'react-hook-form';
+import { useLocation, useParams } from 'react-router-dom';
 import './styles.scss';
 import CommentCard from '../Movies/components/CommentCard';
 import { makePrivateRequest } from 'core/utils/request';
 import { Movie } from 'core/types/Movie';
-import { isAllowedByRole } from 'core/utils/auth';
+import { getSessionData, isAllowedByRole } from 'core/utils/auth';
+import { useForm } from 'react-hook-form';
 
 type ParamsType = {
     movieId: string;
 }
 
+type FormState = {
+    text: string;
+    userId: number;
+    movieId: number;
+}
+
 const MovieDetail = () => {
     const { movieId } = useParams<ParamsType>();
     const [movie, setMovie] = useState<Movie>();
+    const { register, handleSubmit, errors } = useForm<FormState>();
+    const [currentUser, setCurrentUser] = useState(0);
+    const location = useLocation();
+
+    const onSubmit = (data: FormState) => {
+        makePrivateRequest({ url: '/reviews', method: 'POST', data});
+    }
+
+    useEffect(() => {
+        const currentUserData = getSessionData();
+        setCurrentUser(currentUserData.userId);
+    }, [location]);
 
     useEffect(() => {
         makePrivateRequest({ url: `/movies/${movieId}` })
@@ -37,15 +55,23 @@ const MovieDetail = () => {
             </div>
             {isAllowedByRole(['ROLE_MEMBER']) && (
                 <div className="card-base border-radius-10 text-center movie-detail-form-comment">
-                    <form>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
                             <textarea
-                                name="description"
+                                ref={register({ required: "Esse campo não pode ser vazio" })}
+                                name="text"
                                 rows={2}
                                 placeholder="Deixe sua avaliação aqui"
-                                className="movie-detail-form-input border-radius-10"
+                                className="movie-detail-form-input border-radius-10"    
                             />
+                            {errors.text && (
+                                <div className="invalid-feedback d-block text-left">
+                                    {errors.text.message}
+                                </div>
+                            )}
                         </div>
+                        <div><input type="hidden" value={currentUser} name="userId" ref={register} /></div>
+                        <div><input type="hidden" value={movieId} name="movieId" ref={register} /></div>
                         <button className="btn btn-primary movie-detail-form-button">salvar avaliação</button>
                     </form>
                 </div>
