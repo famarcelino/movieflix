@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import './styles.scss';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import CommentCard from '../Movies/components/CommentCard';
 import { makePrivateRequest } from 'core/utils/request';
 import { Movie } from 'core/types/Movie';
 import { getSessionData, isAllowedByRole } from 'core/utils/auth';
-import { useForm } from 'react-hook-form';
+import './styles.scss';
 
 type ParamsType = {
     movieId: string;
@@ -23,9 +24,17 @@ const MovieDetail = () => {
     const { register, handleSubmit, errors } = useForm<FormState>();
     const [currentUser, setCurrentUser] = useState(0);
     const location = useLocation();
+    const history = useHistory();
 
     const onSubmit = (data: FormState) => {
-        makePrivateRequest({ url: '/reviews', method: 'POST', data});
+        makePrivateRequest({ url: '/reviews', method: 'POST', data })
+            .then(() => {
+                toast.info('Comentário inserido com sucesso!');
+                history.push('/movies');
+            })
+            .catch(() => {
+                toast.error('Erro ao inserir comentário!');
+            });
     }
 
     useEffect(() => {
@@ -62,7 +71,7 @@ const MovieDetail = () => {
                                 name="text"
                                 rows={2}
                                 placeholder="Deixe sua avaliação aqui"
-                                className="movie-detail-form-input border-radius-10"    
+                                className="movie-detail-form-input border-radius-10"
                             />
                             {errors.text && (
                                 <div className="invalid-feedback d-block text-left">
