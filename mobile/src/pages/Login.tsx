@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Text, View, TouchableOpacity, Image, TextInput } from "react-native";
 import eyesClosed from "../assets/eyes-closed.png";
 import eyesOpened from "../assets/eyes-opened.png";
@@ -7,7 +8,9 @@ import { theme, text } from "../styles";
 import { isAuthenticated, login } from "../services/auth";
 
 const Login: React.FC = () => {
+    const navigation = useNavigation();
     const [hidePassword, setHidePassword] = useState(true);
+    const [userFetchData, setUserFetchData] = useState({});
     const [userInfo, setUserInfo] = useState({ username: "", password: "" });
 
     useEffect(() => {
@@ -16,8 +19,10 @@ const Login: React.FC = () => {
     
     async function handleLogin() {
         const data = await login(userInfo);
-        console.warn(data);
-    } 
+        setUserFetchData(data);
+        navigation.navigate("Movies");
+    };
+    
     return (
         <View style={theme.loginContainer}>
             <Text style={text.loginTitle}>Login</Text>

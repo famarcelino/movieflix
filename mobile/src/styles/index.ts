@@ -47,6 +47,29 @@ const text = StyleSheet.create({
         marginBottom: 50,
         textTransform: "uppercase",
     },
+    // navbar
+    logoutText: {},
+    // Movie 
+    movieTitle: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color: colors.white,
+    },
+    movieYear: {
+        fontSize: 16,
+        fontWeight: "bold",
+        color: colors.primary,
+    },
+    movieSubTitle: {
+        fontSize: 18,
+        color: colors.veryLightkGray,
+    },
+    moveViewTextDetails: {
+        fontSize: 16,
+        fontWeight: "bold",
+        color: colors.white,
+        textTransform: "uppercase",
+    },
 });
 
 const theme = StyleSheet.create({
@@ -58,7 +81,7 @@ const theme = StyleSheet.create({
         flex: 1,
         justifyContent: "space-around",
         alignItems: "center",
-        backgroundColor: colors.darkGray,
+        backgroundColor: colors.gray,
     },
     draw: {
         width: 340,
@@ -117,6 +140,56 @@ const theme = StyleSheet.create({
         margin: -30,
     },
     eyes: {},
+    // Movie
+    scrollContainer: {
+        padding: 20,
+        backgroundColor: colors.darkGray,
+    },
+    movieContainer: {
+        width: 374,
+        backgroundColor: colors.gray,
+        borderRadius: 10,
+        marginBottom: 18,
+    },
+    movieContent: {
+        paddingHorizontal: 18,
+        marginVertical: 20,
+    },
+    movieImg: {
+        marginTop: 18,
+        width: 374,
+        height: 227,
+    },
+    movieViewDetails: {
+        marginTop: 10,
+        width: "100%",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 1,
+        borderColor: colors.white,
+        borderRadius: 10,
+        padding: 10,
+    },
+    // Search
+    inputContainer: {
+        width: 374,
+        backgroundColor: colors.gray,
+        padding: 20,
+        borderRadius: 10,
+        marginBottom: 18,
+    },
+    searchInput: {
+        fontSize: 16,
+        color: colors.white,
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 1,
+        borderColor: colors.white,
+        borderRadius: 10,
+        padding: 15,
+    },
 });
 
 const nav = StyleSheet.create ({
@@ -132,6 +205,17 @@ const nav = StyleSheet.create ({
     },
     backArrow: {
         marginLeft: 20,
+    },
+    // Logout
+    logoutBtn: {
+        width: 60,
+        height: 30,
+        borderWidth: 1,
+        borderColor: colors.black,
+        borderRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        marginRight: 20,
     },
 });
 
