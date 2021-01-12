@@ -70,6 +70,38 @@ const text = StyleSheet.create({
         color: colors.white,
         textTransform: "uppercase",
     },
+    // Movie Detail
+    movieDetailTitle: {
+        fontSize: 24,
+        fontWeight: "bold",
+        marginLeft: 25,
+        marginTop: 17,
+        color: colors.white,
+    },
+    movieDetailYear: {
+        marginLeft: 25,
+        marginTop: 15,
+        fontSize: 24,
+        fontWeight: "bold",
+        color: colors.primary,
+    },
+    movieDetailSubtitle: {
+        marginLeft: 25,
+        fontSize: 18,
+        color: colors.gray2,
+    },
+    movieDetailSinopseTitle: {
+        marginLeft: 25,
+        marginTop: 15,
+        fontSize: 22,
+        fontWeight: "bold",
+        color: colors.white,
+    },
+    movieDetailSinopseText: {
+        fontSize: 16,
+        color: colors.gray2,
+        textAlign: "justify",
+    },
 });
 
 const theme = StyleSheet.create({
@@ -189,6 +221,41 @@ const theme = StyleSheet.create({
         borderColor: colors.white,
         borderRadius: 10,
         padding: 15,
+    },
+    // Movie Detail
+    containerMovieDetail: {
+        width: "100%",
+        height: "100%",
+        padding: 20,
+        backgroundColor: colors.darkGray,
+    },
+    contentMovieDetail: {
+        backgroundColor: colors.gray,
+        borderRadius: 10,
+    },
+    movieDetailSinopseContent: {
+        marginTop: 10,
+        marginBottom: 14,
+        marginHorizontal: 25,
+        paddingHorizontal: 20,
+        paddingVertical: 15,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: colors.veryLightkGray,
+    },
+    movieDetailInputContainer: {
+        marginTop: 18,
+        marginBottom: 18,
+        backgroundColor: colors.gray,
+        borderRadius: 10,
+        paddingHorizontal: 20,
+        paddingVertical: 15,
+    },
+    movieDetailInput: {
+        height: 97, 
+        backgroundColor: colors.white,
+        paddingHorizontal: 10,
+        borderRadius: 10,
     },
 });
 

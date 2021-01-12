@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Home, Login, Movies, MovieDetail, Dashboard } from "../pages";
+import { Home, Login, Movies, MovieDetail } from "../pages";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import leftArrow from "../assets/leftArrow.png";
 import { colors, nav, text } from "../styles";
@@ -12,10 +12,15 @@ const Stack = createStackNavigator();
 
 const HeaderTextLeft: React.FC = () => {
     const route = useRoute();
+    const navigation = useNavigation();
     return (
         <View style={nav.container}>
             { route.name !== "Home" ? (
-                <TouchableOpacity activeOpacity={0.8} style={nav.backArrow} >
+                <TouchableOpacity
+                    activeOpacity={0.8}
+                    style={nav.backArrow}
+                    onPress={() => navigation.goBack()}
+                >
                     <Image source={leftArrow} />
                 </TouchableOpacity>) : null
             }
@@ -79,8 +84,6 @@ const Routes: React.FC = () => {
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Movies" component={Movies} />
             <Stack.Screen name="MovieDetail" component={MovieDetail} />
-            {/* Administrative Dashboard */}
-            <Stack.Screen name="Dashboard" component={Dashboard} />
         </Stack.Navigator>
     );
 };

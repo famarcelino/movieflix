@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { theme, text } from "../styles";
 import arrow from "../assets/arrow.png";
 import draw from "../assets/draw.png";
+import { isAuthenticated } from "../services/auth";
 
 const Home: React.FC = () => {
     const navigation = useNavigation();
@@ -15,11 +16,13 @@ const Home: React.FC = () => {
                 <Text style={text.regular}>Diga o que você achou do seu filme favorito</Text>
             </View>
             <TouchableOpacity
-                style={theme.primaryButton} 
+                style={theme.primaryButton}
                 activeOpacity={0.8}
                 onPress={() => navigation.navigate("Login")}
             >
-                <Text style={text.primaryText}>fazer login</Text>
+                <Text style={text.primaryText}>
+                    fazer login
+                </Text>
                 <View style={theme.arrowContainer}>
                     <Image source={arrow} />
                 </View>

@@ -1,6 +1,7 @@
 import { api, TOKEN } from "./index";
 import queryString from "query-string";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import jwtDecoded from "jwt-decode";
 
 interface AuthProps {
     username: string;

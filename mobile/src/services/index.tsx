@@ -2,7 +2,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const api = axios.create({
-    baseURL: 'http://192.168.11.88:8080'
+    baseURL: 'http://192.168.11.92:8080'
 });
 
 export const TOKEN = "Basic ZHNtb3ZpZWZsaXg6ZHNtb3ZpZWZsaXgxMjM=";
@@ -24,6 +24,16 @@ export async function getMovies() {
     return res;
 };
 
+export async function getMovie(id: number) {
+    const authToken = await userToken();
+    const res = api.get(`/movies/${id}`, {
+        headers: {
+            Authorization: `Bearer ${authToken}`,
+        },
+    });
+    return res;
+};
+
 export async function createReview(data: object) {
     const authToken = await userToken();
     const res = api.post(`/reviews`, data, {
@@ -34,18 +44,13 @@ export async function createReview(data: object) {
     return res;
 };
 
-export async function getMovie(id: number) {
+export async function getGenres() {
     const authToken = await userToken();
-    const res = await api.get(`/movies/${id}`, {
+    const res = api.get(`/genres?direction=ASC&orderBy=name`, {
         headers: {
             Authorization: `Bearer ${authToken}`,
         },
     });
-    return res;
-};
-
-export function getGenres() {
-    const res = api.get(`/genres?direction=ASC&orderBy=name`);
     return res;
 };
 
