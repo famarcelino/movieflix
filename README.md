@@ -12,5 +12,14 @@ Nesse sistema é possível pesquisar filmes por categorias e visualizar os comen
 
 Foram criados alguns endpoints para consulta de usuários, filmes, gêneros e revisões (comentários) dos filmes.
 
+A versão em "produção" do banco de dados foi criada nos servidores da Heroku.
+
 ## Front-end
-Futuramente será implementado o front-end web usando ReactJS.
+O Front-end está implantado na Netlifly no endereço: https://francisco-movieflix.netlify.app/ .
+
+Para testar a aplicação existem dois perfis, sendo um de VISITANTE (ROLE_VISITOR) e outro de MEMBRO (ROLE_MEMBER). A diferença entre os dois perfis é que um permite fazer revisões de filmes (perfil membro) e o outro não.
+
+Segue informações para teste da aplicação:
+
+- usuário visitante: bob@gmail.com com a senha 123456
+- usuário membro: ana@gmail.com com a senha 123456
